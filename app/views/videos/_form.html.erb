@@ -1,0 +1,40 @@
+<%= form_with(model: video) do |form| %>
+  <% if video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+        <% video.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+  <%= form.label :type %>
+  <%= form.label :type, 'mux', :value => 'mux' %>
+
+  <%= form.radio_button :type, 'mux' , :checked =>true %> 
+  <%= form.label :type, 'Video api', :value => 'video_api' %>
+
+  <%= form.radio_button :type, 'video_api' %>
+  </div>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title ,:required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description ,:required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_url %>
+    <%= form.text_field :video_url ,:required => true %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
